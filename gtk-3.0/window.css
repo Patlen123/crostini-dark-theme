@@ -1,0 +1,137 @@
+/* This file is part of adapta-gtk-theme Copyright (C) 2016-2018 Tista <tista.gma500@gmail.com> This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. */
+/* This file should contain only styling for the Window titlebar and frame. */
+
+headerbar {
+  border-radius: 0;
+  background-color: @titlebar_bg_color;
+  background-image: none;
+  color: @theme_fg_color;
+  text-shadow: none;
+  min-height: 32px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+headerbar label.title {
+  /* Hide the text to match ChromeOS native */
+  color: transparent;
+}
+
+headerbar button label.title {
+  /* Override label color if the label is a button label (use the color of the
+   * parent widget). */
+  color: inherit;
+}
+
+.titlebar.default-decoration {
+  border: none;
+  box-shadow: none;
+}
+
+.titlebar .titlebutton {
+  color: transparent;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  outline: none;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  margin: 0 1px 0 1px;
+  background-size: 38%, 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.titlebar .titlebutton image {
+  color: transparent;
+}
+
+.titlebar .titlebutton.maximize {
+  background-image: url("assets/Window/maximize.svg"),
+                    url("assets/Window/background.svg");
+}
+.titlebar .titlebutton.maximize:hover,
+.titlebar .titlebutton.maximize:hover:backdrop {
+  background-image: url("assets/Window/maximize.svg"),
+                    url("assets/Window/background_hover.svg");
+}
+.titlebar .titlebutton.maximize:backdrop {
+  background-image: url('assets/Window/maximize_backdrop.svg'),
+                    url("assets/Window/background.svg");
+}
+.maximized .titlebar .titlebutton.maximize {
+  background-image: url('assets/Window/restore.svg'),
+                    url("assets/Window/background.svg");
+}
+.maximized .titlebar .titlebutton.maximize:hover,
+.maximized .titlebar .titlebutton.maximize:hover:backdrop {
+  background-image: url('assets/Window/restore.svg'),
+                    url('assets/Window/background_hover.svg');
+}
+.maximized .titlebar .titlebutton.maximize:backdrop,
+.maximized .titlebar .titlebutton.maximize:hover:backdrop {
+  background-image: url('assets/Window/restore_backdrop.svg'),
+                    url("assets/Window/background.svg");
+}
+.titlebar .titlebutton.minimize {
+  background-image: url("assets/Window/minimize.svg"),
+                    url("assets/Window/background.svg");
+}
+.titlebar .titlebutton.minimize:hover,
+.titlebar .titlebutton.minimize:hover:backdrop {
+  background-image: url("assets/Window/minimize.svg"),
+                    url("assets/Window/background_hover.svg");
+}
+.titlebar .titlebutton.minimize:backdrop {
+  background-image: url('assets/Window/minimize_backdrop.svg'),
+                    url("assets/Window/background.svg");
+}
+.titlebar .titlebutton.close {
+  background-image: url("assets/Window/close.svg"),
+                    url("assets/Window/background.svg");
+}
+.titlebar .titlebutton.close:hover,
+.titlebar .titlebutton.close:hover:backdrop {
+  background-image: url("assets/Window/close.svg"),
+                    url("assets/Window/background_hover.svg");
+}
+.titlebar .titlebutton.close:backdrop {
+  background-image: url("assets/Window/close_backdrop.svg"),
+                    url("assets/Window/background.svg");
+}
+
+/* The close button has a smaller margin on the side closer to the titlebar
+ * which is dependant on the text direction. */
+.titlebar .titlebutton.close:dir(rtl),
+.titlebar .titlebutton.close:hover:dir(rtl),
+.titlebar .titlebutton.close:backdrop:dir(rtl) {
+  margin: 0 1px 0 1px;
+}
+
+.titlebar .titlebutton.close:dir(ltr),
+.titlebar .titlebutton.close:hover:dir(ltr),
+.titlebar .titlebutton.close:backdrop:dir(ltr) {
+  margin: 0 1px 0 1px;
+}
+
+.titlebar,
+headerbar {
+  border-color: @theme_bg_color;
+}
+
+/* Window frame */
+
+.window-frame {
+  border-style: none;
+  border-radius: 0;
+  /* this is used for the resize cursor area */
+  margin: 10px;
+}
+
+.window-frame.tiled {
+  border-radius: 0;
+}

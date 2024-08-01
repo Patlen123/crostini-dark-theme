@@ -1,0 +1,138 @@
+/* This file is part of adapta-gtk-theme Copyright (C) 2016-2018 Tista <tista.gma500@gmail.com> This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. */
+/* Styles for the scrollbar
+ *
+ * This includes styling for:
+ *  - the slider (the moving part of the bar)
+ *  - the trough (the part of the bar that the slider moves in)
+ *  - the overlay-indicator (the part of the bar that the slider moves in on
+ *  top of the trough if the scrollbar is an overlay-scrollbar.
+ *
+ * The .scrollbar, .slider and .trough classes are deprecated in gtk-3.22. They
+ * can be removed once support for gtk-3.0 : 3.18 is removed.
+ */
+
+/* Hide 'steppers' (buttons that can be clicked to scroll incrementally) */
+* {
+  -GtkScrollbar-has-backward-stepper: false;
+  -GtkScrollbar-has-forward-stepper: false;
+}
+
+/* By default give the scrollbar a theme_bg_color background. This styles apps
+ * like gnome-terminal, that use default scrollbars.
+ */
+scrollbar,
+.scrollbar {
+  background-color: @theme_bg_color;
+  transition-duration: 0.2s;
+  border: none;
+}
+
+/* The scrollbar should be hidden/transparent if it is a trough or
+ * overlay-indicator. This styles apps that support reactive (or pop-out)
+ * scrollbars.
+ */
+scrollbar.trough,
+.scrollbar.trough,
+scrollbar.overlay-indicator,
+.scrollbar.overlay-indicator {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+scrollbar slider,
+scrollbar .slider,
+.scrollbar slider,
+.scrollbar .slider {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Darken slider on hover or active. */
+scrollbar slider:hover,
+scrollbar .slider:hover,
+.scrollbar slider:hover,
+.scrollbar .slider:hover,
+scrollbar slider:active,
+scrollbar .slider:active,
+.scrollbar slider:active,
+.scrollbar .slider:active {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Make the slider slightly transparent when disabled. */
+scrollbar slider:disabled,
+scrollbar .slider:disabled,
+.scrollbar slider:disabled,
+.scrollbar .slider:disabled {
+  opacity: 0.38;
+}
+
+scrollbar.vertical slider,
+scrollbar.vertical .slider,
+scrollbar.vertical.fine-tune slider,
+scrollbar.vertical.fine-tune .slider,
+.scrollbar.vertical slider,
+.scrollbar.vertical .slider,
+.scrollbar.vertical.fine-tune slider,
+.scrollbar.vertical.fine-tune .slider {
+  min-width: 6px;
+  min-height: 2.4rem;
+}
+
+scrollbar.horizontal slider,
+scrollbar.horizontal .slider,
+scrollbar.horizontal.fine-tune slider,
+scrollbar.horizontal.fine-tune .slider,
+.scrollbar.horizontal slider,
+.scrollbar.horizontal .slider,
+.scrollbar.horizontal.fine-tune slider,
+.scrollbar.horizontal.fine-tune .slider {
+  min-width: 2.4rem;
+  min-height: 6px;
+}
+
+/* Hide the border that touches the screen edge */
+scrollbar.left slider {
+  border-left: none;
+}
+
+scrollbar.right slider {
+  border-right: none;
+}
+
+scrollbar.top slider {
+  border-top: none;
+}
+
+scrollbar.bottom slider {
+  border-bottom: none;
+}
+
+/* The scrollbar pops out when active */
+scrollbar.overlay-indicator.dragging.vertical slider,
+.scrollbar.overlay-indicator.dragging.vertical slider,
+scrollbar.overlay-indicator.hovering.vertical slider,
+.scrollbar.overlay-indicator.hovering.vertical slider {
+  min-width: 10px;
+  min-height: 2.4rem;
+}
+
+scrollbar.overlay-indicator.dragging.horizontal slider,
+.scrollbar.overlay-indicator.dragging.horizontal slider,
+scrollbar.overlay-indicator.hovering.horizontal slider,
+.scrollbar.overlay-indicator.hovering.horizontal slider {
+  min-width: 2.4rem;
+  min-height: 10px;
+}
+
+/* Slow scrolling when hovering over the slider. */
+scrollbar.overlay-indicator.hovering.vertical slider,
+.scrollbar.overlay-indicator.hovering.vertical slider {
+  animation: slow_down_vert 0.2s linear forwards;
+}
+
+scrollbar.overlay-indicator.hovering.horizontal slider,
+.scrollbar.overlay-indicator.hovering.horizontal slider {
+  animation: slow_down_horz 0.2s linear forwards;
+}
